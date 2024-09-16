@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Awadh Fashion</title>
+  <link rel="shortcut icon" href="{% static "images/logo1.png" %}" type="image/x-icon">
+  <style media="screen">
+    .footer{
+      position: fixed;
+    }
+  </style>
+</head>
+
+<body style="background-color:#f7f7f7;">
+  {%if request.user.is_authenticated%}
+    {% include "ecom/customer_navbar.html" %}
+  {%else%}
+    {% include "ecom/navbar.html" %}
+  {%endif%}
+  <br><br><br>
+<h3 style="text-align:center;">"Awadh Fashion is online-web application so that we can provide offline store get online customer for the bussiness <br>
+ Made by Group 24 Member" </h3>
+<h3 style="text-align:center;">
+  Varun Srivastava
+  2100560109017
+</h3> 
+<h3 style="text-align:center;">  
+  Shashank Awasthi
+  2100560109011</h3>
+<h3 style="text-align:center;">  
+  Ankur Srivastava
+  2100560109002</h3>
+<h3 style="text-align:center;">  
+  Simant Bakshi
+  2000560100104
+</h3>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+  {% include "ecom/footer.html" %}
+</body>
+
+</html>

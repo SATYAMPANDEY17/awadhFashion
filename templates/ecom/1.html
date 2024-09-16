@@ -1,0 +1,19 @@
+<div class="row row1">
+    <ul class="largenav pull-right">
+
+        <li class="upper-links"><a class="links" href="/my-order">Track Orders <img src="{% static "images/track.png" %}" width="15" height="15"></a></li>
+        <li class="upper-links"><a class="links" href="/">Home</a></li>
+        <li class="upper-links"><a class="links" href="/category">Category</a></li>
+        <li class="upper-links"><a class="links" href="/my-profile">Profile <img src="{% static "images/user.png" %}" width="15" height="15"></a></li>
+        <li class="upper-links"><a class="links" href="/logout">Logout <img src="{% static "images/logout.png" %}" width="15" height="15"></a></li>
+        <li class="upper-links dropdown"><a class="links" href="">More <img src="{% static "images/application.png" %}" width="15" height="15"></a>
+          <ul class="dropdown-menu">
+            <li class="profile-li"><a class="profile-links" href="/send-feedback">Send Feedback</a></li>
+              <li class="profile-li"><a class="profile-links" href="/contactus">Contact Us</a></li>
+              <li class="profile-li"><a class="profile-links" href="/aboutus">About Us</a></li>
+          </ul>
+      </li>
+        
+    </ul>
+</div>
+{{ product_count_in_cart }}

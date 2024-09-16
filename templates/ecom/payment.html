@@ -1,0 +1,83 @@
+{% extends 'ecom/customer_base.html' %}
+{% load static %}
+
+{% block content %}
+<head>
+
+</head>
+<style media="screen">
+
+.panel-title {display: inline;font-weight: bold;}
+.checkbox.pull-right { margin: 0; }
+.pl-ziro { padding-left: 0px; }
+</style>
+<br><br>
+{% comment %} <center><i>This is a FAKE PAYMENT. Just for demo purpose</i></center> {% endcomment %}
+<br><br>
+<div class="container" style="text-align:center; padding-left:300px;">
+    <div class="row">
+        <div class="col-xs-12 col-md-4" style="height:500px; width:600px;">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">
+                        Shippment Details
+                    </h3>
+                    
+                </div>
+                <div class="panel-body">
+                    <form role="form" method="post">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <h3 style="text-align:center">Email : {{email}}</h3>
+                        </div>
+                        <div class="input-group">
+                            <h3 style="text-align:center">Mobile : {{mobile}}</h3>
+                        </div>
+                        <div class="input-group">
+                            <h3 style="text-align:center">Address : {{address}}</h3>
+                        </div>
+                    </div>
+                    </form>
+                </div>
+            </div>
+            <ul class="nav nav-pills nav-stacked">
+                <li class="active" id="rzp-button1" ><a href="#"><span class="badge pull-right">{{total}}</span> Online Payment</a>
+                </li>
+            </ul>
+            <br/>
+            <a href="/payment-success" class="btn btn-success btn-lg btn-block" role="button">Cash on Delivery </a>
+        </div>
+    </div>
+</div>
+<form action="{% url 'payment-success' %}" method="post">
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<script>
+var options = {
+    "key": "{{razorpay_merchant_id}}", // Enter the Key ID generated from the Dashboard
+    "amount": "{{order.amount}}" , // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+    "currency": "INR",
+    "name": "Awadh Fashion", //your business name
+    "description": "Test Transaction",
+    "image": "",
+    "order_id": "{{order_id}}",
+    "callback_url":"http://127.0.0.1:8000/payment-online", //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+    "prefill": { //We recommend using the prefill parameter to auto-fill customer's contact information, especially their phone number
+        "name": "Simant Bakshi", //your customer's name
+        "email": "2000560100104@bbdniit.ac.in", 
+        "contact": "7905541098"  //Provide the customer's phone number for better conversion rates 
+    },
+    "notes": {
+        "address": "Razorpay Corporate Office"
+    },
+    "theme": {
+        "color": "#3399cc"
+    }
+};
+var rzp1 = new Razorpay(options);
+document.getElementById('rzp-button1').onclick = function(e){
+    rzp1.open();
+    e.preventDefault();
+}
+</script>
+</form>
+{% endblock content %}
